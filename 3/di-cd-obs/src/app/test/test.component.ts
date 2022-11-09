@@ -11,29 +11,32 @@ import { MyClass, myCustomToken } from '../app.module';
   ]
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TestComponent implements OnInit, OnChanges {
+export class TestComponent implements OnInit {
 
   @Input() users!: { name: string }[];
 
-  constructor(
-    private cdRef: ChangeDetectorRef,
-    private injector: Injector
-  ) {
-    this.cdRef.detach();
+  constructor(){}
 
-    const value = this.injector.get(myCustomToken, null);
-    const appCmp = this.injector.get(AppComponent);
-    console.log(value, appCmp);
-  }
 
-  ngOnChanges(): void {
-    if (this.users.length > 4) {
-      this.cdRef.detectChanges();
-    }
-  }
+  // constructor(
+  //   private cdRef: ChangeDetectorRef,
+  //   private injector: Injector
+  // ) {
+  //   this.cdRef.detach();
+
+  //   const value = this.injector.get(myCustomToken, null);
+  //   const appCmp = this.injector.get(AppComponent);
+  //   console.log(value, appCmp);
+  // }
+
+  // ngOnChanges(): void {
+  //   if (this.users.length > 4) {
+  //     this.cdRef.detectChanges();
+  //   }
+  // }
 
   ngOnInit(): void {
-    this.cdRef.detectChanges();
+    // this.cdRef.detectChanges();
   }
 
 }

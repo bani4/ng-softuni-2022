@@ -1,10 +1,11 @@
-import { Component, Inject, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MyClass, myCustomToken } from './app.module';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   counter = 0;
@@ -24,9 +25,9 @@ export class AppComponent {
     // test: MyClass
   ) {
     // console.log(test);
-    // setInterval(() => {
-    //   this.counter++;
-    // }, 3000);
+    setInterval(() => {
+      this.counter++;
+    }, 3000);
 
   }
 
